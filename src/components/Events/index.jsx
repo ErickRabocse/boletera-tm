@@ -3,7 +3,6 @@ import EventItem from './components/EventItem'
 import eventsJSON from '../../data/events.json'
 import { useState } from 'react'
 // const events = data._embedded.events;
-
 const Events = ({ searchTerm }) => {
   const [data] = useState(eventsJSON)
   const { _embedded: { events } } = data
@@ -13,7 +12,8 @@ const Events = ({ searchTerm }) => {
   const renderEvents = () => {
     let eventsFiltered = events
     if (searchTerm.length > 0) {
-      eventsFiltered = eventsFiltered.filter(item => item.name.toLocaleLowerCase().includes(searchTerm))
+      eventsFiltered = eventsFiltered.filter(
+        item => item.name.toLocaleLowerCase().includes(searchTerm))
     }
     return eventsFiltered.map(eventItem => (
       <EventItem
@@ -26,12 +26,6 @@ const Events = ({ searchTerm }) => {
       />
     ))
   }
-
-  return (
-    <div>Events
-      {renderEvents()}
-    </div>
-
-  )
+  return (<div>Events{renderEvents()}</div>)
 }
 export default Events

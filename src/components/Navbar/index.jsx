@@ -8,7 +8,7 @@ const NavBar = ({ onSearch }) => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       onSearch(search)
-      console.log(search, 10)
+      // console.log(search, 10)
     }
   }
   //   console.log(search)
@@ -24,5 +24,4 @@ const NavBar = ({ onSearch }) => {
     </div>
   )
 }
-
 export default NavBar
