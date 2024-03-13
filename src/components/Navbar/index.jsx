@@ -1,7 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const NavBar = ({ onSearch }) => {
   const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    console.log('search has been updated')
+  }, [search])
+
+  useEffect(() => {
+    console.log('onSearch has been updated')
+  }, [onSearch])
+
+  useEffect(() => {
+    console.log('Component has been mounted')
+  }, [])
+
   const handleInputChange = (e) => {
     setSearch(e.target.value)
   }
