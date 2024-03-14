@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 
-const NavBar = ({ onSearch }) => {
+const NavBar = forwardRef(({ onSearch }, ref) => {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -15,6 +15,11 @@ const NavBar = ({ onSearch }) => {
     console.log('Component has been mounted')
   }, [])
 
+  useImperativeHandle(ref, () => ({
+    search,
+    setSearch
+  }))
+
   const handleInputChange = (e) => {
     setSearch(e.target.value)
   }
@@ -26,7 +31,7 @@ const NavBar = ({ onSearch }) => {
   }
   //   console.log(search)
   return (
-    <div>
+    <div ref={ref}>
       <p>Mi boletera</p>
       <input
         placeholder='Encuentra tu evento'
@@ -36,5 +41,7 @@ const NavBar = ({ onSearch }) => {
       />
     </div>
   )
-}
+})
+
+NavBar.displayName = 'NavBar'
 export default NavBar
